@@ -1,0 +1,47 @@
+package Course;
+
+public class Course {
+    public String name;
+    public String[] sizeChanger;
+    public String[] students=new String[0];
+    public int total;
+    
+    public Course(String courseName){
+        name=courseName;
+    }
+    public void addStudent(String studentName){
+        total++;
+        sizeChanger=new String[total];
+        System.arraycopy(students, 0, sizeChanger, 0, total-1);
+        sizeChanger[total-1]=studentName;
+        students=sizeChanger;
+    }
+    public String[] getStudents(){
+        return students;
+    }
+    public int noOfStudents(){
+        return total;
+    }
+    public String getcoursename(){
+        return name;
+    }
+    public void dropstudents(String studentName){
+        total--;
+        int j=0;
+        sizeChanger=new String[total];
+        for(String cpyStu:students){
+            if (!cpyStu.equals(studentName)){
+                sizeChanger[j]=cpyStu;
+                j++;
+            }
+        }
+        students=sizeChanger;
+    }
+    public void clear(){
+        total=0;
+        sizeChanger=new String[total];
+        students=sizeChanger;
+    }
+    
+    }
+    
